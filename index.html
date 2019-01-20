@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)http://zonaon.net/login?dst=http%3A%2F%2Fwww.msftconnecttest.com%2Fredirect -->
+<html lang="es"><head>
+
+
+
+
+		<link href="./login_files/style.css" rel="stylesheet">
+		<link href="./login_files/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+		<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+		<script src="js/firebaseKey.js"></script>
+
+	</head>
+	<body id="myPage" data-spy="scroll" >
+		<br>
+		<br>
+		<br>
+
+		<div class="areaTop text-center">
+			<span class="logo-main"><img src="./login_files/logo.png" alt="1"></span>  <!--    Linea para logo img////Activar si desea utilizar un logo en formato PNG   -->
+			<!-- <span class="icon-signal logo-mid"></span> -->
+		<p>Login </p>
+			<!-- <p>Solo compra tu ficha en cualquiera de nuestros <span class="puntos">punto de venta</span> y empieza a nevagar en Internet.</p> -->
+
+<!--TERMINA CODIGO ERROR-->
+<br>
+<input id="txtEmail" type="email" class="form-control" placeholder="Correo">
+<input id="txtPassword" type="password" class="form-control" size="20" placeholder="Passowrd" >
+<button id="btnLogin" class="btn btn-action">Login</button>
+		<p id="p1"></p>
+
+		</div>
+
+		<footer class="container-fluid text-center bg-grey">
+			<div class="col-sm-12">
+				<p><span class="icon-location"></span>Emiliano Zapata #22, Xochitlan, Progreso de O. Hgo.</p>
+				<p><span class="icon-mobile"></span> 7721145890</p>
+				<p><span class="icon-mail-alt"></span> carlos-beto88@hotmail.com</p>
+			</div>
+		</footer>
+
+<script src="js/conecxion.js"></script>
+<script type="text/javascript">
+			firebase.auth().onAuthStateChanged( firebaseUser => {
+    if(firebaseUser) {
+		window.location="clientes.html";
+      console.log(firebaseUser);
+
+
+    } else {
+      console.log('no logueado');
+
+    }
+  });
+
+
+	</script>
+
+
+</body></html>

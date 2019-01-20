@@ -1,0 +1,38 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	font-family:sans-serif;
+
+	}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+table{
+	  margin: 18px;
+  width: 100%;
+
+}
+td{
+
+	margin-left: 50px;
+  border-bottom: 1px solid #eeeeee;
+}
+th{
+	margin-left: 50px;
+  border-bottom: 1px solid #000;
+}
+.total_pays{
+
+	  border-top: 1px solid #000;
+}
+
+.page-header {
+		position:relative;
+    padding-bottom: 17px;
+    margin: 18px;
+    border-bottom: 1px solid #000;
+		text-align:center;
+}

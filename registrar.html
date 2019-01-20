@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+
+
+		<link rel="stylesheet" href="css/pikaday.css">
+
+
+		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+		<script src="js/firebaseKey.js"></script>
+		<link href="css/estilo.css" rel="stylesheet">
+
+</head>
+<body id="Clientes" data-spy="scroll" >
+		<nav>
+
+			  <ul>
+
+			      <a href="clientes.html"><li class="bar_menue">Inicio</li></a>
+			        <a href="#"><li class="bar_menue">Registrar</li></a>
+			        <a href="buscar.html"><li class="bar_menue">Buscar</li></a>
+			        <a href="paquetes.html"><li class="bar_menue">Paquetes</li></a>
+			        <a href="reportes.html"><li class="bar_menue">Reporte</li></a>
+			    <a href="#"><li class="bar_menue" id="btnLogout">salir</li></a>
+
+			    </ul>
+
+</nav>
+
+	<section align="center">
+		<div class="page-header"> <h3>BIENVENIDO</h3></div>
+
+<input name="s" type="hidden" >
+<table id="registro" width="900" border="0" cellspacing="1" align="center">
+  <tbody>
+    <tr>
+      <td width="100">Nombre:</td>
+      <td width="300"><input type="text" id="nombre"  ></td>
+      <td width="100">Apellidos:</td>
+      <td width="369"><input id="apellidos" type="text" name="apellidos" required=""></td>
+    </tr>
+    <tr>
+      <td width="100">Correo</td>
+      <td><input id="Correo" type="text"></td>
+      <td width="100">Telefono:</td>
+      <td><input id="telefono" type="phone"></td>
+    </tr>
+    <tr>
+      <td width="100">Paquete:</td>
+      <td>
+      <select  id="paquete" name="paquete" required="">
+
+	        <option value="Basico">Basio: $250</option>
+	        <option value="Esencial">Esencial : $200 </option>
+     	    <option value="Avanzado">Avanzado $ 450</option>
+       </select>
+      </td>
+      <td width="100">Fecha Registro:</td>
+      <td>
+				<input name="datepicker" id="datepicker" type="text" autocomplete="off" required="">
+			</td>
+    </tr>
+      <tr>
+      <td width="100">Direccion IP:</td>
+      <td><input name="ip" id="ip" type="text" autocomplete="off" required=""></td>
+ 		<td width="100">Direccion:</td>
+      <td><textarea id="direccion" placeholder="Direccion" name="direccion" autocomplete="off" required=""></textarea></td>
+    </tr>
+	   <tr>
+      <td width="100">Fecha de Corte</td>
+      <td>
+					<select  id="fecha_corte" name="paquete" required="">
+	       	</select>
+			</td>
+ 		<td width="100">Fecha de Pago</td>
+      <td>
+				<select  id="fecha_pago" name="paquete" required="">
+
+	       </select>
+			</td>
+    </tr>
+
+		<tr>
+	<td colspan="2"><div align="center"><input id="push" type="submit" name="registrar" onclick="setCliente()" ></div></td>
+	<td colspan="2"><div id="registro_completo" align="center"><p>Cliente Agregado Exitosamente</p></div></td>
+
+	</tr>
+</table>
+
+
+	</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+    <script>
+
+
+    var picker = new Pikaday(
+    {
+			i18n: {
+		 previousMonth : 'Siguiente mes',
+		 nextMonth     : 'Proximo mes',
+		 months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+		 weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+		 weekdaysShort : ['Som','Lun','Mar','Mier','Jue','Vie','Sab']
+	 },
+		field: document.getElementById('datepicker'),
+		format: 'D/MMM/YYYY',
+		toString(date, format) {
+			 // you should do formatting based on the passed format,
+			 // but we will just return 'D/M/YYYY' for simplicity
+			 const day = date.getDate();
+			 const month = date.getMonth() + 1;
+			 const year = date.getFullYear();
+			 return `${day}-${month}-${year}`;
+	 },
+	 parse(dateString, format) {
+			 // dateString is the result of `toString` method
+			 const parts = dateString.split('-');
+			 const day = parseInt(parts[0], 10);
+			 const month = parseInt(parts[1], 10) - 1;
+			 const year = parseInt(parts[2], 10);
+			 return new Date(year, month, day);
+	 },
+        firstDay: 1,
+        minDate: new Date(2015,01,01),
+        maxDate: new Date(2020, 12, 31),
+        yearRange: [2000,2020]
+    });
+
+
+
+    </script>
+<!--	<script src="js/logout.js"></script>-->
+
+<script src="js/logout.js"></script>
+
+	<script src="js/registrar.js"></script>
+	<script>
+		const txtfecha_pago=document.getElementById('fecha_pago');
+		const txtfecha_corte=document.getElementById('fecha_corte');
+		var a=0;
+		for (var i = 1; i <= 31; i++) {
+			a+='<option value="'+i+'">'+i+'</option>';
+		}
+		txtfecha_pago.innerHTML=a;
+		txtfecha_corte.innerHTML=a;
+	</script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    		<link rel="stylesheet" href="css/pikaday.css">
+    		<link href="./login_files/style.css" rel="stylesheet">
+    		<link href="./login_files/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+        <link href="css/estilo.css" rel="stylesheet">
+
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    		<script src="js/firebaseKey.js"></script>
+        <script src="js/jspdf.js"></script>
+        <script src="js/jquery-2.1.3.js"></script>
+        <script src="js/pdfFromHTML.js"></script>
+
+
+  </head>
+  <body>
+    <nav>
+  <ul>
+
+      <a href="clientes.html"><li class="bar_menue">Inicio</li></a>
+        <a href="registrar.html"><li class="bar_menue">Registrar</li></a>
+        <a href="#"><li class="bar_menue">Buscar</li></a>
+        <a href="paquetes.html"><li class="bar_menue">Paquetes</li></a>
+        <a href="reportes.html"><li class="bar_menue">Reporte</li></a>
+        <a href="#"><li class="bar_menue" id="btnLogout">salir</li></a>
+    </ul>
+</nav>
+
+
+
+
+
+<!-- INICIO CENTRO DE ADMINISTRADOR -->
+<div class="page-header"><h3>BUSCAR CLIENTE</h3></div>
+    <div class="search">
+
+        	    <input class="bigfield" id="search" type="text" placeholder="¿Tienes alguna consulta para un cliente? Puedes comenzar aquí" >
+                <!--<input type="hidden" value="id" name="orden" id="orden">
+                      <select name="filtro">
+                	       <option value="">ID Cliente</option>
+                         <option value="xnombre">Nombre</option>
+					               <option value="xapellidos">Apellidos</option>
+                         <option value="xdireccion">Direccion</option>
+                       </select>-->
+                          <button id="btnsearch" class="btnsearch" onclick="buscar()">BUSCAR</button>
+
+    </div>
+
+
+   <!-- Fin Codigo centro -->
+
+   	<section>
+   		<table id="cliente" class="&nbsp;" width="900" border="0" cellspacing="1">
+       <thead  bordercolor="#000000" height="40">
+
+   	     <th ><div align="center"><strong>Nombre</strong></div></th>
+         <th  ><div align="center"><strong>Direccion</strong></div></th>
+         <th ><div align="center"><strong>Direccion ip</strong></div></th>
+         <th ><div align="center"><strong>Fecha de Pago</strong></div></th>
+         <th ><div align="center"><strong>Realizar Pago</strong></div></th>
+       </thead>
+      </table>
+   	</section>
+    <div class="popup_bg" id="popup_bg">
+        <div class="popup_main_div">
+          <div id="close_popup_div" onclick="close_ClienteDitels()">
+          <p>X</p>
+          </div>
+          <div align="center">
+          <table id="edit_clint_ditels" cellspacing="1">
+          <tbody>
+          <thead>
+            <td height="30" colspan="4" bordercolor="#eeeee" bgcolor="#ff0"><div align="center"><strong>DATOS DEL CLIENTE</strong></div></td>
+          </thead>
+          <tr>
+            <td><strong>Nombre:</strong></td>
+            <td>
+              <input  class="edited_input" id="name_clinet" type="text" >
+            </td>
+            <td><strong>Direccion IP:</strong></td>
+            <td >
+                <input id="ip_client" class="edited_input" type="text" >
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Telefono:</strong></td>
+            <td >
+            <input id="tel" class="edited_input" type="text" >
+            </td>
+            <td width="114" ><strong>Direccion:</strong></td>
+            <td width="329" >
+                <input id="dir_clinet" class="edited_input" type="text" >
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Fecha de Contratacion:</strong></td>
+            <td >
+                	<input  class="edited_input" name="datepicker" id="dia_regitro" type="text" autocomplete="off" required="">
+            </td>
+            <td><strong>Paquete Actual:</strong></td>
+            <td  >
+              <select class="edited_input" id="paquete">
+            				<option value="Esencial">Paquete:Esencial </option>
+            				<option  value="Basico">Paquete:Basico </option>
+            				<option value="Avanzado">Paquete:Avanzado</option>
+
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Fecha De pago:</strong></td>
+            <td >
+              <select class="edited_input" id="fecha_pago">
+
+
+              </select>
+            </td>
+            <td><strong>Fecha De corte:</strong></td>
+            <td >
+              <select class="edited_input" id="fecha_corte">
+
+
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Correo:</strong></td>
+
+            <td><input type="text" id="correo"></td>
+          </tr>
+          <tr>
+            <td hidden="true"><div id="client_key" ></div></td>
+          </tr>
+          </tbody>
+          </table>
+          <br>
+          <table width="800" border="1" cellspacing="1">
+          <tbody>
+          <thead>
+            <td height="30" colspan="4" bordercolor="#000000" bgcolor="#FF0"><div align="center"><strong>INFORMACION ADICIONAL</strong></div></td>
+          </thead>
+          <tr>
+            <td width="121"><strong>Nombre de red:</strong></td>
+            <td width="212"></td>
+            <td width="112"><strong>Contraseña:</strong></td>
+            <td width="332"></td>
+          </tr>
+          </tbody>
+          </table>
+          <p>&nbsp;</p>
+          <table id="lista_pagos" width="736" border="1" cellspacing="1">
+          <tbody>
+          <tr>
+            <td height="30" colspan="4" bordercolor="#000000" bgcolor="#FF0"><div align="center"><strong>REGISTRO DE MENSUALIDADES</strong></div></td>
+            </tr>
+          <tr>
+            <td width="161"><div align="center"><strong>MES</strong></div></td>
+            <td width="162"><div align="center"><strong>FECHA DE PAGO</strong></div></td>
+            <td width="163"><div align="center"><strong>RECIBIO</strong></div></td>
+            <td width="227"><div align="center"><strong>SUBTOTAL</strong></div></td>
+          </tr>
+          </tbody>
+          </table>
+          <div id="btn_changeclient"><button  id="pagos">Reportar Pago</button><button   id="guardar_cambios" onclick="saveChanges()" >Gurdar Cambios</button></div>
+          </div>
+      </div>
+    </div>
+
+        <script src="js/buscar.js"></script>
+
+        <div class="popup_bg" id="pay_bg">
+            <div class="pay_div" id="pay_div">
+
+              <div id="close_popup_div" onclick="close_payDitels()">
+              <p>X</p>
+              </div>
+        <!-- INICIO CENTRO DE ADMINISTRADOR -->
+        <div class="page-header"><h3>PAGAR CLIENTE</h3></div>
+
+        <div align="center">
+
+        <input type="hidden">
+
+        <table width="614" height="325" border="2" cellspacing="1">
+          <tbody>
+            <tr>
+              <td rowspan="2"><img  src="img/logo.png" width="204" height="127"></td>
+              <td rowspan="2"><p align="center">
+                  <strong>DIRECCION</strong></p>
+                  <div align="center" >
+                    <p>Emiliano Zapata #22, Xochitlan, Progreso de O. Hgo.</p>
+                    <p>7721145890</p>
+                    <p>carlos-beto88@hotmail.com</p>
+                  <br>
+                  <strong></strong>
+                </td>
+              <td width="182" height="45"><h1 align="center">RECIBO</h1></td>
+            </tr>
+            <tr>
+              <td height="40" style="text-align: center"><strong style="color: #FF0105"></strong> <strong id="pay_date"style="color: #FF0105"></strong></td>
+            </tr>
+            <tr>
+              <td colspan="3"><strong id="domicilio"></strong><p><strong></strong></p></td>
+              </tr>
+            <tr>
+              <td bgcolor="#F0F0F0" bordercolor="#000000" width="206"><div align="center"><strong>DESCRIPCION</strong></div></td>
+              <td bgcolor="#F0F0F0" bordercolor="#000000" width="206"><div align="center"><strong>Paquete</strong></div></td>
+              <td bgcolor="#F0F0F0" bordercolor="#000000" width="182"><div align="center"><strong>IMPORTE</strong></div></td>
+            </tr>
+            <tr>
+              <td height="61">Renta Mensual de Internet</td>
+              <td>
+
+                <select  id="selectd_pkg">
+
+
+                 </select>
+                               </td>
+                    <td style="text-align: center"><div align="center" id="prices_pkg"><strong ></strong></td>
+            </tr>
+            <tr>
+              <td colspan="2"><div align="right"><strong>TOTAL:</strong></div></td>
+              <td><div align="center"><strong id="total"></strong></div></td>
+            </tr>
+              </tbody>
+        </table>
+        <p>&nbsp;</p>
+        <table width="852" border="1" cellspacing="1">
+          <tbody>
+            <tr>
+              <td colspan="6" height="30" bgcolor="#F0F0F0" bordercolor="#000000"><div align="center"><strong>DETALLES DE PAGO </strong></div></td>
+              </tr>
+            <tr>
+              <td width="82"><strong>FECHA DE REGISTRO:</strong></td>
+              <td width="158"> <div align="center"><strong id="fecha_registro"style="color: #FF0105"></strong></div></td>
+              <td width="76"><strong>FECHA DE PAGO: </strong></td>
+              <td width="165"><div align="center"><strong  id="fecha_pago"style="color: #FF0105"></strong> <input type="hidden" name="datepicker" value="2018-10-01"></div></td>
+              <td width="71"><strong>PERIODO:</strong></td>
+              <td width="267"><div align="left"><strong id="rango de fecha">De:</strong>  <strong style="color: #FF0105"></strong><p></p>
+                <strong>A:</strong>
+              <strong style="color: #FF0105"> Sábado 01 de Diciembre de 2018</strong></div>
+              <input type="hidden" name="mes" value="NOVIEMBRE"></td>
+            </tr>
+            <tr>
+              <td colspan="6"><p>&nbsp;</p>
+                <div align="center"></div></td>
+              </tr>
+          </tbody>
+        </table>
+
+
+        <p></p>
+        <button name="registrar" id="pay" >PAGAR</button>
+
+        </div>
+        <!-- Fin Codigo centro -->
+        <p></p>
+        </div>
+
+      	<script src="js/logout.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+            <script>
+
+            var picker = new Pikaday(
+            {
+
+        		field: document.getElementById("dia_regitro"),
+        		toString(date, format) {
+        			 // you should do formatting based on the passed format,
+        			 // but we will just return 'D/M/YYYY' for simplicity
+        			 const day = date.getDate();
+        			 const month = date.getMonth() + 1;
+        			 const year = date.getFullYear();
+        			 return `${day}-${month}-${year}`;
+        	 },
+        	 parse(dateString, format) {
+        			 // dateString is the result of `toString` method
+        			 const parts = dateString.split('-');
+        			 const day = parseInt(parts[0], 10);
+        			 const month = parseInt(parts[1], 10) - 1;
+        			 const year = parseInt(parts[2], 10);
+        			 return new Date(year, month, day);
+        	 },
+                firstDay: 1,
+                minDate: new Date(),
+                maxDate: new Date(2020, 12, 31),
+                yearRange: [2000,2020]
+            });
+            </script>
+            <script>
+          		const txtfecha_pago=document.getElementById('fecha_pago');
+          		const txtfecha_corte=document.getElementById('fecha_corte');
+          		var a=0;
+          		for (var i = 1; i <= 31; i++) {
+          			a+='<option value="'+i+'">'+i+'</option>';
+          		}
+          		txtfecha_pago.innerHTML=a;
+          		txtfecha_corte.innerHTML=a;
+          	</script>
+
+  </body>
+</html>

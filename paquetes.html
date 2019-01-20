@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Paquetes</title>
+    <link href="css/estilo.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+      <script src="js/firebaseKey.js"></script>
+      <script src="js/paquetes.js"></script>
+
+  </head>
+  <body>
+    <nav>
+
+			  <ul>
+
+			      <a href="clientes.html"><li class="bar_menue">Inicio</li></a>
+			        <a href="registrar.html"><li class="bar_menue">Registrar</li></a>
+			        <a href="buscar.html"><li class="bar_menue">Buscar</li></a>
+			        <a href="paquetes.html"><li class="bar_menue">Paquetes</li></a>
+			        <a href="reportes.html"><li class="bar_menue">Reporte</li></a>
+			    <a href="#"><li class="bar_menue" id="btnLogout">salir</li></a>
+
+			    </ul>
+
+
+</nav>
+      	<div class="page-header"> <h3>BIENVENIDO</h3></div>
+        <section>
+          <table  alig="center"  id="lista_paquetes"class="&nbsp;" width="907" border="0" cellspacing="1" disabled>
+            <thead  alig="center" bordercolor="#000000" height="40">
+              <th ><div align="center"><strong>Nombre</strong></div></th>
+              <th ><div align="center"><strong>Costo</strong></div></th>
+              <th  ><div align="center"><strong>Velocidad</strong></div></th>
+              <th id="Guardar" disabled><strong>Editar</strong></th>
+              <th id="cancelar" hidden="true"><strong>Cancelar</strong></th>
+              </thead>
+
+
+      </table>
+
+        </section>
+
+
+        <div class="popup_bg" id="popup_bg">
+            <div class="pay_div" id="pay_div">
+
+              <div id="close_popup_div" onclick="close_editPgk()">
+              <p>X</p>
+              </div>
+        <!-- INICIO CENTRO DE ADMINISTRADOR -->
+        <div class="page-header"><h3>DATOS DEL PAQUETE</h3></div>
+          <div align="center">
+
+        <table class="&nbsp;" border="1" id="edit_pkg"  cellspacing="1">
+          <thead>
+            <td colspan="4" align="center" bgcolor="#ff0"><strong>DATOS DEL PAQUETE<strong></td>
+          </thead>
+
+          <tr>
+            <th ><strong>Nombre:</strong></th>
+            <th ><strong>Costo:</strong></th>
+            <th ><strong>Velocidad</strong></th>
+
+          </tr>
+          <tr>
+            <td ><input type="text" id="nombre"></td>
+            <td ><strong>$</strong><input type="text" id="costo"></td>
+            <td ><input type="text" id="velocidad"></td>
+          </tr>
+
+        </table>
+          </div>
+        </div>
+      </div>
+
+
+        <script src="js/logout.js"></script>
+
+        <script type="text/javascript">
+        getPaquetes();
+        </script>
+  </body>
+
+</html>

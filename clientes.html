@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script>
+	<link rel="stylesheet" href="css/pikaday.css">
+		<link href="css/estilo.css" rel="stylesheet">
+		<script src="js/firebaseKey.js"></script>
+			<script src="js/inicio.js"></script>
+</head>
+<body id="Clientes" data-spy="scroll" >
+		<nav>
+
+			  <ul>
+
+			      <a href="clientes.html"><li class="bar_menue">Inicio</li></a>
+			        <a href="registrar.html"><li class="bar_menue">Registrar</li></a>
+			        <a href="buscar.html"><li class="bar_menue">Buscar</li></a>
+			        <a href="paquetes.html"><li class="bar_menue">Paquetes</li></a>
+			        <a href="reportes.html"><li class="bar_menue">Reporte</li></a>
+			    <a href="#"><li class="bar_menue" id="btnLogout">salir</li></a>
+
+			    </ul>
+
+</nav>
+
+	<section>
+		<div class="page-header"> <h3>BIENVENIDO</h3></div>
+		<table id="lista_pagos"class="&nbsp;" width="907" border="0" cellspacing="1">
+			<thead>
+				<th><select  id="filtro" onchange="setFiltro()">
+				<option value="corte">Corte</option>
+				<option value="dia">Pagos del dia</option>
+				<option value="Esencial">Paquete:Esencial </option>
+				<option  value="Basico">Paquete:Basico </option>
+				<option value="Avanzado">Paquete:Avanzado</option>
+		 		</select>
+	 			</th>
+	 			<th colspan="3">
+		 <input type="text" id="datepicker" onchange="onChangeDate()" placeholder="Fecha"/>
+	 </th>
+		<th><button class="buttons" id="imprimir_pagos" onclick="imprimirPagos()" >Imprimir pagos</button></th>
+	</thead>
+			<thead  bordercolor="#000000" height="40">
+				<th ><div align="center"><strong>Nombre</strong></div></th>
+				<th ><div align="center"><strong>ip</strong></div></th>
+				<th  ><div align="center"><strong>Paquete</strong></div></th>
+				<th ><div align="center"><strong>Fecha de Corte</strong></div></th>
+				<th ><div align="center"><strong>Tipo de Pago</strong></div></th>
+			</thead>
+			<tfoot id="tfoot" >
+     </tfoot>
+</table>
+
+
+</section>
+
+				<div class="popup_bg" id="popup_bg_report">
+						<div class="validate_pay_div" id="pay_div">
+
+							<div align="center" id="close_popup_div" ><p align="center" onclick="close_payDitels()">x</p></div>
+				<!-- INICIO CENTRO DE ADMINISTRADOR -->
+				<div class="page-header"><h3>Verificar pago</h3></div>
+					<div align="center">
+				<input type="hidden">
+				<table width="214" height="325" >
+				<tr>
+				<td>	<select  id="validar_pago_pkg">
+							<option value="Esencial">Paquete:Esencial </option>
+							<option  value="Basico">Paquete:Basico </option>
+							<option value="Avanzado">Paquete:Avanzado</option>
+					 </select>
+				 </td>
+				 <td >
+				<button class="buttons" id="pagos">Validar Pago</button>
+				 </td>
+</tr>
+					<tr><td colspan="2" id="pago_img"></td</tr>
+
+				</table>
+					</div>
+				</div>
+			</div>
+	<script src="js/inicio.js"></script>
+
+	<!--<script src="js/logout.js"></script>
+-->
+	<script src="js/moment-with-locales.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+	<script>
+
+	    // You can get and set dates with moment objects
+	    var picker = new Pikaday(
+	    {
+				i18n: {
+			 previousMonth : 'Siguiente mes',
+			 nextMonth     : 'Proximo mes',
+			 months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+			 weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+			 weekdaysShort : ['Som','Lun','Mar','Mier','Jue','Vie','Sab']
+		 },
+			field: document.getElementById('datepicker'),
+			format: 'D/MMM/YYYY',
+			toString(date, format) {
+				 // you should do formatting based on the passed format,
+				 // but we will just return 'D/M/YYYY' for simplicity
+				 const day = date.getDate();
+				 const month = date.getMonth() + 1;
+				 const year = date.getFullYear();
+				 return `${day}-${month}-${year}`;
+		 },
+		 parse(dateString, format) {
+				 // dateString is the result of `toString` method
+				 const parts = dateString.split('-');
+				 const day = parseInt(parts[0], 10);
+				 const month = parseInt(parts[1], 10) - 1;
+				 const year = parseInt(parts[2], 10);
+				 return new Date(year, month, day);
+		 },
+					firstDay: 1,
+					minDate: new Date(2015,01,01),
+					maxDate: new Date(2020, 12, 31),
+					yearRange: [2000,2020]
+			});
+	    //picker.setMoment(moment().dayOfYear(366));
+	</script>
+</body>
+</html>

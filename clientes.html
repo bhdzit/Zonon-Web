@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clientez ZonaOn</title>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/morris.js"></script>
+	<link rel="stylesheet" href="css/morris.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/clientes.css">
+	<!--<script src="fontawesome-free-5.10.2-web/js/all.js"></script>-->
+	<script src="https://kit.fontawesome.com/015cfc4544.js"></script>
+</head>
+<body>
+	<header >
+		<a class="arb-wisp-titel">
+		Zonaon Wisp
+		</a>
+
+
+		<div class="arb-wisp-user-menu">
+			<a><span class="user-info"><img src="img/user.jpg"> Bienvenido, Admin</span>
+			<ul>
+				<li>Mi Perfil</li>
+				<li>Salir</li>
+			</ul>
+		</a>
+		</div>
+
+	</header>
+
+	<aside class="arb-wisp-menue">
+						<ul class="arb-wisp-ul-menue">
+						<li  class="arb-dashbord-menue-elemnt arb-wisp-li-submenu"></span><a >Escritorio</a></li>
+						<li  class="arb-dashbord-menue-elemnt">
+							<a href="#">Clientes
+					<span id="clientes-submenue-span" onclick="setSubmenu('clientes-submenue-ul','clientes-submenue-span')" class="fas fa-sort-down" ></span></a>
+									<ul id="clientes-submenue-ul" class="arb-wisp-submenue">
+										<li >Listar</li>
+										<li>Emails</li>
+										<li>Mapas de Clientes</li>	
+									</ul>
+						</li>
+						<li  class="arb-dashbord-menue-elemnt">
+							<a href="#">Planes
+								<span id="planes-submenue-span" class="fas fa-sort-down" onclick="setSubmenu('planes-submenue-ul','planes-submenue-span')" class="fas fa-sort-down" ></span>
+							</a>
+
+									<ul id="planes-submenue-ul" class="arb-wisp-submenue">
+										<li>Internet</li>
+										<li>VoIp</li>
+										<li>Personalizado</li>	
+									</ul>
+
+						</li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Gestion de Red</a></li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Usuarios</a></li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Pagos</a></li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Reportes</a></li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Plantillas</a></li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Tiket Soport</a></li>
+						<li class="arb-dashbord-menue-elemnt"><a href="#">Sistema</a></li>
+
+						</ul>
+	   </aside>
+	<section>
+		<div class="arb-wisp-navegation-bar">
+			<span><i class="fas fa-desktop "></i></span>
+			<ul>
+				<li>Escritorio</li>
+				<li>Clientes
+
+			</ul>
+	
+
+
+		</div>
+		<div style="height: 70%; width: 100%; display: flex;">
+			<div align="center"  style="height: auto; width: 50%; border-right:  1px solid #0b62a4; ">
+				<div align="center" class="client-graf">
+					<strong>Clientes Activos</strong>
+					<div id="grafica-cientes"  >
+						
+					</div>
+				</div>
+				
+			</div>
+			<div align="center"  style="height: auto; width: 50%; border-right:  1px solid #0b62a4;">
+				
+				<div align="center" class="client-graf">
+					<strong>adasdasd</strong>
+					<div id="grafica-pagos"  >
+						
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="arb-wisp-info-menu">
+			<div class="arb-wisp-quik-info">
+			<table class="arb-wisp-quik-menu">
+			  <tr>
+			    <th align="center">
+			    	<div class="infobox infobox-green">
+						<div class="infobox-icon">
+							<i class="ace-icon fa fa-group fa-2x"></i>
+						</div>
+						<div class="infobox-data">
+							<span class="infobox-data-number" id="stClient">14</span>
+								<div class="infobox-content">Clientes</div>
+						</div>
+					</div>
+			</th>
+			    <th><div class="infobox infobox-green">
+						<div class="infobox-icon">
+							<i class="ace-icon fa fa-tachometer fa-2x"></i>
+						</div>
+						<div class="infobox-data">
+							<span class="infobox-data-number" id="stClient">3</span>
+								<div class="infobox-content">Planes</div>
+						</div>
+				</div></th>
+			   
+
+			  </tr>
+			  <tr>
+			  	 <th>
+			  	 	<div class="infobox infobox-green ">
+						<div class="infobox-icon">
+							<i class="ace-icon fa fa-ticket fa-2x"></i>
+						</div>
+						<div class="infobox-data">
+							<span class="infobox-data-number" id="stClient">14</span>
+								<div class="infobox-content">Tikets</div>
+						</div>
+				</div></th>
+  			    <th><div class="infobox infobox-green">
+						<div class="infobox-icon">
+							<i class="ace-icon fa fa-group fa-2x"></i>
+						</div>
+						<div class="infobox-data">
+							<span class="infobox-data-number" id="stClient">14</span>
+								<div class="infobox-content">Cliente Suspendidos</div>
+						</div>
+				</div></th>
+			  </tr>
+			
+			</table>
+			</div>
+		<div  class="arb-wisp-quik-info">
+			<table class="arb-wisp-log-table" >
+			  <tr>		  	
+				<th>Detalle</th>
+				<th>Usuario</th>
+				<th>Fecha y hora</th>
+				<th>Tipo</th>
+			  </tr>
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+
+			<tr>
+				<td>Ha iniciado sesión en el sistema</td>
+				<td>Admin</td>
+				<td>02:52-18/09/2019</td>
+				<td>info</td>
+			</tr>
+			</table>
+			</div>
+
+		</div>
+
+	
+
+	</section>
+
+		<script type="text/javascript">
+				function setSubmenu(ulsubmenu,ulspan){
+					
+					var submenu=document.getElementById(ulsubmenu);
+					var span=document.getElementById(ulspan);					
+					if(submenu.style.display!=="block"){
+					submenu.style.display ="block";
+					span.classList.replace("fa-sort-down","fa-sort-up");
+					}
+					
+					else{
+						span.classList.replace("fa-sort-up","fa-sort-down");
+						submenu.style.display ="none";	
+					}
+				
+				};
+				function showMenu(){
+					var page = document.getElementById("a");
+					var arbpage=document.getElementById("arb-wisp-menue");
+					console.log(page.classList[0]);
+					if(page.classList[0] =="arb-page"){
+    				arbpage.className="col-sm-4";
+    				page.classList.replace("arb-page", "arb-close-page");
+    				page.classList.replace("ti-menu", "ti-close");
+					}
+					else{
+					//arbpage.style.width=0%;
+					arbpage.className="d-none";
+					page.classList.replace("arb-close-page","arb-page");
+    				page.classList.replace("ti-close","ti-menu");
+
+					}
+			}
+
+
+			var timestamp_data = [
+				  {"Fecha": "2012-09-10", "No.Clientes": 10 },
+				  {"Fecha": "2012-09-11", "No.Clientes": 20 },
+				  {"Fecha": "2012-09-12", "No.Clientes": 30 },
+				  {"Fecha": "2012-09-13", "No.Clientes": 40 },
+				  {"Fecha": "2012-09-14", "No.Clientes": 45 },
+				  {"Fecha": "2012-09-15", "No.Clientes": 48 },
+				  {"Fecha": "2012-09-16", "No.Clientes": 70 },
+				  {"Fecha": "2012-09-17", "No.Clientes": 80 },
+				  {"Fecha": "2012-09-18", "No.Clientes": 90 },
+				  {"Fecha": "2012-09-19", "No.Clientes": 100 }
+				];
+				Morris.Line({
+				  element: 'grafica-cientes',
+				  data: timestamp_data,
+				  lineColors:['#FFD335'],
+				  xkey: 'Fecha',
+				  ykeys: ['No.Clientes'],
+				  labels: ['No.Clientes'],
+				  dateFormat: function (x) { return new Date(x).toDateString(); }
+				});
+
+				Morris.Donut({
+				  element: 'grafica-pagos',
+				  data: [
+				    {value: 70, label: 'Actvios'},
+				    {value: 30, label: 'Inactivos'}
+				 
+				  ], 
+				  backgroundColor: '#FFF',
+				  labelColor: '#FFD335',
+				  colors: [
+				    '#FFD335',
+				    '#f3d362',
+				  ],
+				  formatter: function (x) { return x + "%"}
+				}).on('click', function(i, row){
+				  console.log(i, row);
+				});
+
+			</script>
+
+
+</body>
+</html>

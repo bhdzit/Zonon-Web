@@ -1,0 +1,232 @@
+:root{
+
+	--color-bg-primerio:#343a40;
+}
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #FFD335;
+    background: #5f5f5f;
+    padding: 0;
+    margin: 0;
+}
+section{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	overflow: scroll;
+		position: absolute;
+	right:  0;
+	bottom: 0;
+	top: 38px;
+	width: 80%;
+
+
+}
+
+
+.arb-wisp-titel-container{
+	display: block;
+	top: 0;
+	right: 0;
+	width: 80%;
+	margin-left: auto;
+	height: auto;
+	background: var(--color-bg-primerio);
+	border-bottom: 1px solid #fff;
+}
+.arb-wisp-user-menu{
+ 	display: block;
+    margin-left: auto;
+    width: 22%;
+    height: 50px;
+
+}
+
+.arb-wisp-location-menue{
+    background:#00ff00;    
+    display:block;
+    position:absolute;
+    width:100%;
+    height:50px;
+    z-index:123;
+}
+
+.arb-wisp-titel-container img{
+	border-radius: 50%;
+}
+
+.arb-wisp-user-menu ul{
+	display: none;
+}
+.arb-wisp-user-menu b{
+	
+	padding-top: auto;
+	height: 100px;
+	}
+	.arb-wisp-menue{
+	background: var(--color-bg-primerio);
+    width: 20%;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: scroll;
+
+}
+
+
+.arb-wisp-menue ul{
+	    list-style-type: none;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 0;
+	
+
+}
+
+ .arb-dashbord-menue-elemnt {
+	
+    margin: 35px 0 15px 0;
+    padding: 0 0 10px 0;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #202020;	
+ }
+
+.arb-dashbord-menue-elemnt a{
+
+	color: #FFD335;
+ 	text-decoration: none;
+ 	/*text-decoration: none;
+ 	line-height: 4vw;
+	background: var(--color-bg-primerio);
+	color: #FFD335;
+	height: 10%;
+	width: 100%;
+ 	font-size: 1.5vw;
+ 	text-align: center;
+ 	display: block;*/
+ }
+
+
+.arb-wisp-submenue{
+	display: none;
+}
+.arb-wisp-submenue li{
+    text-align:left;
+    padding:10% 0 0 10%;
+    border-bottom: 1px solid #000;
+    border-left: 2px solid  #FFD335;
+    
+}
+::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+    display: none;  /* Ocultar scroll */
+}
+.arb-wisp-info-menu{
+display: flex;
+}
+.arb-wisp-quik-info{
+	width: 50%;
+	padding-top: 2%;
+	height: auto;
+	overflow: auto;
+	max-height: 140px;
+}
+.arb-wisp-quik-menu{
+	width:100%;
+
+}
+
+.arb-wisp-quik-menu th{
+border: 1px dotted #FFD335;
+width: 50%;
+height: 65px;
+}
+.infobox{
+	display: flex;
+	align-content: center;
+	color: var(--main-bg-color);
+}
+
+.infobox-icon{
+	background: #FFD335;
+	color: #fff;
+	line-height: 4.5vw;
+	width: 20%;
+	height: 50px;
+	border-radius:  50%;
+}
+
+.infobox-data{
+	width: 80%;
+	text-align: left;
+}
+.infobox-data-number{
+font-size: 30px;
+color: #FFD335;
+
+}
+.arb-wisp-log-table{
+	
+	width: 100%;
+	padding-top: 5%;
+	border-collapse: collapse;
+
+	
+}
+.arb-wisp-log-table th{
+    color:var(--color-bg-primerio);
+	text-align: center;		
+	width: 25%;
+	background: #FFD335;
+}
+.arb-wisp-log-table tr td{
+	text-align: center;
+
+
+
+}
+
+
+.arb-wisp-log-table tr:nth-child(even){background-color: #5f5f5f}
+
+
+
+
+
+
+.arb-wisp-navegation-bar{
+	height: 30px;
+	background: var(--main-bg-color);
+	line-height: 27px;
+	padding-bottom: 1px solid #f0f;
+}
+.arb-wisp-navegation-bar ul{
+display: contents;
+vertical-align: center;
+line-height: 50%;
+}
+.arb-wisp-navegation-bar ul li{
+display: inline;
+list-style-type: afar;
+	
+}
+
+/*
+ * resumen unidad 4 y 5 
+ * nomra tia-568
+ estandar de par trensado 
+ categorias 3-7
+ tipos -utp, sctp, stp
+ */

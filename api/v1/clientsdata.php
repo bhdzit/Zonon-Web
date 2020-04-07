@@ -41,8 +41,8 @@
       die("Connection failed: " . $conn->connect_error);
       }
 
-      $sql = "select ws_id,wc_name,wc_last_name,wc_phone,ws_pkg,ws_contract,ws_sector,ST_Y(`ws_maps`), ST_X(`ws_maps`),ws_date,wp_id,wp_name
- from `wisp_clients` join `wisp_services` join `wisp_pkg` where wc_id=ws_id_cliente and ws_pkg=wp_id;";
+      $sql = "select ws_id,wc_name,wc_last_name,wc_phone,ws_pkg,wct_nombre,ws_sector,ST_Y(`ws_maps`), ST_X(`ws_maps`),ws_date,wp_id,wp_name
+ from `wisp_clients` join `wisp_services` join `wisp_pkg` join `wisp_contract` where wc_id=ws_id_cliente and ws_pkg=wp_id and `wct_id`= `ws_contract` order by ws_id ;";
       $result = $conn->query($sql);
           $conn->close();
       return $result;

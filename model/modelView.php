@@ -5,7 +5,11 @@ class modelView{
 
 		$rutesarray=["clientes",
 		"home",
-		"torres"];
+		"torres",
+		"sectores",
+		"paquetes",
+		"contratos",
+		"pagos"];
 
 		if(in_array($view,$rutesarray)){
 			return "./view/modulos/".$view."_view.php";

@@ -52,7 +52,7 @@ left: 0;
     bottom: 0;
     right: 0;
     left: -100vw;
-    background: 
+    background:
     #34353b;
     -webkit-transform: skew(20deg);
     transform: skew(20deg);
@@ -111,12 +111,12 @@ width: 100%;
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             border-radius: 50%;
-        
-           
+
+
         }
         .internocirculo{
         border-radius: 50%;
-    
+
         width: 90%;
         height: 90%;
         border: 1px solid #000;
@@ -126,7 +126,7 @@ width: 100%;
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-    
+
 
 
         }
@@ -166,7 +166,7 @@ width: 100%;
                 animation-name: example;
         animation-duration: 10s;
               animation-iteration-count: infinite;
-    
+
         }
 
         @keyframes example {
@@ -185,4 +185,3 @@ width: 100%;
 ::-webkit-scrollbar {
   width: 10px;
 }
-  

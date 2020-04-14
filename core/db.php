@@ -17,7 +17,7 @@ class db{
 
 			if($queryres->num_rows===1||$queryres->num_rows===0){
 
-				return $queryres->fetch_assoc();
+				return $queryres->fetch_array();
 			}
 
 
